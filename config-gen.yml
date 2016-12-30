@@ -1,0 +1,14 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  gather_facts: no
+
+  tasks:
+  - name: GET DATA
+    include_vars: ./host_vars/file.yml
+
+  - name: GENERATE CONFIG
+    template:
+      src: ./templates/accessvlan.j2
+      dest: ./config-output/{{ item.switch }}.conf
+    with_items: "{{ file_vlan }}"
