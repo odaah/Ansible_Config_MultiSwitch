@@ -1,0 +1,8 @@
+{% for grouper, host in file_vlan|groupby('switch') %}
+{% if item.switch == grouper %}
+{% for item in host %}            
+int {{ item.port }}                   
+switchport access vlan {{ item.vlan }}
+{% endfor %}
+{% endif %}
+{% endfor %}
