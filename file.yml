@@ -1,0 +1,10 @@
+---
+file_vlan:
+- { switch: switch-1, port: Gi1/8,  vlan: 395 }
+- { switch: switch-1, port: Gi1/23, vlan: 388 }
+- { switch: switch-2, port: Gi1/8,  vlan: 395 }
+- { switch: switch-2, port: Gi1/23, vlan: 388 }
+- { switch: switch-3, port: Gi1/9,  vlan: 395 }
+- { switch: switch-3, port: Gi1/24, vlan: 388 }
+- { switch: switch-4, port: Gi1/9,  vlan: 395 }
+- { switch: switch-4, port: Gi1/24, vlan: 388 }
