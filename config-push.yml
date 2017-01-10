@@ -1,0 +1,24 @@
+---
+- hosts: switch
+  gather_facts: true
+  connection: local
+
+  tasks:
+  - name: OBTAIN LOGIN CREDENTIALS
+    include_vars: secrets.yml
+
+  - name: DEFINE PROVIDER
+    set_fact:
+      provider:
+        host: "{{ inventory_hostname }}"
+        username: "{{ creds['username'] }}"
+        password: "{{ creds['password'] }}"
+        auth_pass: "{{ creds['auth_pass'] }}"
+
+  - name: CONFIGURE INTERFACE
+    ios_config:
+      provider: "{{ provider }}"
+      authorize: yes
+      lines:
+        - "{{ lookup('file', './config-output/{{ inventory_hostname }}.conf') }}"
+    register: write
