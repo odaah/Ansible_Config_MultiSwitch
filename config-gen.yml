@@ -7,8 +7,12 @@
   - name: GET DATA
     include_vars: ./host_vars/file.yml
 
+  - name: GET DATA VLAN
+    include_vars: ./host_vars/name_vlan.yml
+
   - name: GENERATE CONFIG
     template:
       src: ./templates/accessvlan.j2
       dest: ./config-output/{{ item.switch }}.conf
-    with_items: "{{ file_vlan }}"
+with_items: "{{ file_vlan }}"
+
