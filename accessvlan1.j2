@@ -4,6 +4,7 @@
 int {{ item.port }}
 switchport access vlan {{ item.vlan }}
 {% endfor %}
+exit
 {% for groupervlan, hostvlan in host|groupby('vlan') %}
 {% set vary = 0 %}
 {% for itemz in hostvlan %}
